@@ -1,0 +1,10 @@
+version: '3.9'
+
+services:
+  beerapi:
+    container_name: beer-api
+    build: MyPubBeerService.Api/.
+    ports:
+      - 5001:80
+
+      

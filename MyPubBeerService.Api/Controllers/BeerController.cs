@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OData.Query;
 using MyPubBeerService.Api.Models;
@@ -27,6 +28,7 @@ public sealed class BeerController : ControllerBase
 
   [HttpGet]
   [EnableQuery]
+  [DisableCors]
   public async Task<IActionResult> GetBeers()
   {
     return Ok(await _service.GetBeersAsync());
@@ -34,6 +36,7 @@ public sealed class BeerController : ControllerBase
 
   [HttpGet]
   [EnableQuery]
+  [DisableCors]
   [Route("{id}", Name = "GetBeer")]
   public async Task<IActionResult> GetBeer([FromRoute] int? id)
   {

@@ -9,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<BeerServiceDbContext>(opt => opt.UseInMemoryDatabase("beerdb"));
 builder.Services.AddScoped<IBeerRepository, BeerRepository>();
 builder.Services.AddScoped<IBeerService, BeerService>();
-builder.Services.AddControllers().AddOData(opt => opt.Select().Count().Filter().OrderBy());
+builder.Services.AddControllers().AddOData(opt => opt.Select().Count().Filter().SetMaxTop(100).OrderBy().Expand());
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(name: "AllowOrigin",
